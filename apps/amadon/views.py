@@ -22,18 +22,22 @@ def buy(request):
         id = int(request.POST['id'])
         quantity = int(request.POST['quantity'])
         price = request.session['cart']['product_data'][id]['price']
+        request.session.modified = True
         request.session['cart']['count'] = request.session['cart']['count'] + quantity
         request.session['cart']['total'] = quantity * price
         print request.session['cart']['total']
         request.session['cart']['grand_total'] = request.session['cart']['grand_total'] + request.session['cart']['total']
+        print request.session['cart']
         return redirect("checkout")
         
-
 def checkout(request):
-    print request.session['cart']['total']
+    print request.session['cart']
     return render(request,'amadon/checkout.html')
 
 def clear(request):
-    for key in request.session.keys():
-        del request.session[key]
+    try:
+        for key in request.session.keys():
+            del request.session[key]
+    except KeyError:
+        pass
     return redirect('index')
