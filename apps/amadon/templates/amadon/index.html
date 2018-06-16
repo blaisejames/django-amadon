@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+    <h2>Amadon Store!</h2>
+    <tr>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+    {% for product in product_data %}
+    <tr>
+        <td>{{ product.item }}</td>
+        <td>$ {{ product.price }}</td>
+        <td>
+            <form action='/amadon/buy' method='post'>
+                {% csrf_token %}
+                <select name='quantity'>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                <input type='hidden' name='id' value='{{ product.id }}' />
+                <button type='submit'>Buy!</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

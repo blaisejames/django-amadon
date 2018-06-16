@@ -1,0 +1,58 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0px none;
+    padding: 0px;
+    margin: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    margin: 50px;
+    width: 85%;
+}
+main {
+    margin: 0 auto;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+button[type=submit] {
+    width: 50%;
+    background-color: rgb(78, 119, 255);
+    color: white;
+    font-size: 1.5em;
+    padding: 15px 0px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+p {
+    font-size: 1em;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+    margin-bottom: 25px;
+}

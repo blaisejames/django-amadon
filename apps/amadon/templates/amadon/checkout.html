@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Thank you for your business!</h2>
+<div>
+    <p>We charged your credit card ${{ request.session.cart.total }}.</p>
+    <br>
+    <p>You have ordered {{ request.session.cart.count }} items so far and spent {{ request.session.cart.grand_total }}.</p>
+</div>
+<div>
+    <br>
+    <a href="/amadon/">Go Back</a>
+</div>
+
+{% endblock content %}
