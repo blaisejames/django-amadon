@@ -1,10 +1,11 @@
 from django.shortcuts import render, HttpResponse, redirect
 
 def index(request):
+    cart = request.session.get('cart', {})
     context = {
-        "count": request.session.get('count', 0),
-        "total": request.session.get('total', 0),
-        "grand_total": request.session.get("grand_total", 0),
+        "count": cart.get('count', 0),
+        "total": cart.get('total', 0),
+        "grand_total": cart.get("grand_total", 0),
         "product_data": [ 
             { "id": 0, "item": "Dojo Tshirt", "price": 19.99 },
             { "id": 1, "item": "Dojo Sweater", "price": 29.99 },
@@ -25,13 +26,10 @@ def buy(request):
         request.session.modified = True
         request.session['cart']['count'] = request.session['cart']['count'] + quantity
         request.session['cart']['total'] = quantity * price
-        print request.session['cart']['total']
         request.session['cart']['grand_total'] = request.session['cart']['grand_total'] + request.session['cart']['total']
-        print request.session['cart']
         return redirect("checkout")
         
 def checkout(request):
-    print request.session['cart']
     return render(request,'amadon/checkout.html')
 
 def clear(request):
